@@ -1,22 +1,22 @@
-- (function(t, e) {
++ (function(t, e) {
     var s = e.body,
-    n = e.querySelector.bind(e),
-    a = e.querySelectorAll.bind(e),
-    o = n("html"),
-    l = n("#gotop"),
-    c = n("#menu"),
-    r = n("#header"),
-    d = n("#mask"),
-    h = n("#menu-toggle"),
-    f = n("#menu-off"),
-    u = n("#loading"),
+    a = e.querySelector.bind(e),
+    n = e.querySelectorAll.bind(e),
+    o = a("html"),
+    c = a("#gotop"),
+    l = a("#menu"),
+    r = a("#header"),
+    d = a("#mask"),
+    h = a("#menu-toggle"),
+    f = a("#menu-off"),
+    u = a("#loading"),
     v = t.requestAnimationFrame,
     m = 12,
     g = Array.prototype.forEach,
     L = "ontouchstart" in t && /Mobile|Android|iOS|iPhone|iPad|iPod|Windows Phone|KFAPWI/i.test(navigator.userAgent) ? "touchstart": "click",
     p = /micromessenger/i.test(navigator.userAgent),
-    y = function() {},
-    w = function(t) {
+    w = function() {},
+    y = function(t) {
         var e = t.offsetLeft,
         i = t.offsetTop;
         if (t.offsetParent) {
@@ -37,17 +37,17 @@
             e && e > t ? ($.scrollTop = Math.max(e - i, 0), v(arguments.callee.bind(this, t, i))) : t && e < t ? ($.scrollTop = Math.min(e + i, t), v(arguments.callee.bind(this, t, i))) : this.toc.actived(t)
         },
         toggleGotop: function(e) {
-            e > t.innerHeight / 2 ? l.classList.add("in") : l.classList.remove("in")
+            e > t.innerHeight / 2 ? c.classList.add("in") : c.classList.remove("in")
         },
         toggleMenu: function(e) {
-            var i = n("#main");
+            var i = a("#main");
             if (e) {
-                if (c.classList.remove("hide"), t.innerWidth < 1241) if (d.classList.add("in"), c.classList.add("show"), p) {
+                if (l.classList.remove("hide"), t.innerWidth < 1241) if (d.classList.add("in"), l.classList.add("show"), p) {
                     var s = $.scrollTop;
                     i.classList.add("lock"),
                     i.scrollTop = s
                 } else o.classList.add("lock")
-            } else if (c.classList.remove("show"), d.classList.remove("in"), p) {
+            } else if (l.classList.remove("show"), d.classList.remove("in"), p) {
                 var s = i.scrollTop;
                 i.classList.remove("lock"),
                 $.scrollTop = s
@@ -57,32 +57,32 @@
             t > r.clientHeight ? r.classList.add("fixed") : r.classList.remove("fixed")
         },
         toc: function() {
-            var t = n("#post-toc");
+            var t = a("#post-toc");
             if (!t || !t.children.length) return {
-                fixed: y,
-                actived: y
+                fixed: w,
+                actived: w
             };
-            var e = n(".post-header").clientHeight,
+            var e = a(".post-header").clientHeight,
             s = r.clientHeight,
-            a = n("#post-content").querySelectorAll("h1, h2, h3, h4, h5, h6");
-            return t.querySelector('a[href="#' + a[0].id + '"]').parentNode.classList.add("active"),
+            n = a("#post-content").querySelectorAll("h1, h2, h3, h4, h5, h6");
+            return t.querySelector('a[href="#' + n[0].id + '"]').parentNode.classList.add("active"),
             {
                 fixed: function(i) {
                     i >= e - s ? t.classList.add("fixed") : t.classList.remove("fixed")
                 },
                 actived: function(e) {
-                    for (i = 0, len = a.length; i < len; i++) if (e > w(a[i]).y - s - 5) {
+                    for (i = 0, len = n.length; i < len; i++) if (e > y(n[i]).y - s - 5) {
                         t.querySelector("li.active").classList.remove("active");
-                        var n = t.querySelector('a[href="#' + a[i].id + '"]').parentNode;
-                        n.classList.add("active")
+                        var a = t.querySelector('a[href="#' + n[i].id + '"]').parentNode;
+                        a.classList.add("active")
                     }
-                    e < w(a[0]).y && (t.querySelector("li.active").classList.remove("active"), t.querySelector('a[href="#' + a[0].id + '"]').parentNode.classList.add("active"))
+                    e < y(n[0]).y && (t.querySelector("li.active").classList.remove("active"), t.querySelector('a[href="#' + n[0].id + '"]').parentNode.classList.add("active"))
                 }
             }
         } (),
         hideOnMask: [],
         modal: function(t) {
-            this.$modal = n(t),
+            this.$modal = a(t),
             this.$off = this.$modal.querySelector(".close");
             var e = this;
             this.show = function() {
@@ -93,7 +93,7 @@
                 },
                 0)
             },
-            this.onHide = y,
+            this.onHide = w,
             this.hide = function() {
                 e.onHide(),
                 d.classList.remove("in"),
@@ -110,10 +110,10 @@
             this.$off && this.$off.addEventListener(L, this.hide)
         },
         share: function() {
-            var t = n("#pageShare"),
-            i = n("#shareFab"),
+            var t = a("#pageShare"),
+            i = a("#shareFab"),
             s = new this.modal("#globalShare");
-            n("#menuShare").addEventListener(L, s.toggle),
+            a("#menuShare").addEventListener(L, s.toggle),
             i && (i.addEventListener(L,
             function() {
                 t.classList.toggle("in")
@@ -124,7 +124,7 @@
             !1));
             var o = new this.modal("#wxShare");
             o.onHide = s.hide,
-            g.call(a(".wxFab"),
+            g.call(n(".wxFab"),
             function(t) {
                 t.addEventListener(L, o.toggle)
             })
@@ -133,15 +133,21 @@
             function t() {
                 e.classList.toggle("in")
             }
-            var e = n("#search-wrap");
-            n("#search").addEventListener(L, t)
+            var e = a("#search-wrap");
+            a("#search").addEventListener(L, t)
         },
         reward: function() {
             var t = new this.modal("#reward");
-            n("#rewardBtn").addEventListener(L, t.toggle)
+            a("#rewardBtn").addEventListener(L, t.toggle);
+            var e = a("#rewardToggle"),
+            i = a("#rewardCode");
+            e && e.addEventListener("change",
+            function() {
+                i.src = this.checked ? this.dataset.alipay: this.dataset.wechat
+            })
         },
         waterfall: function() {
-            t.innerWidth < 760 || g.call(a(".waterfall"),
+            t.innerWidth < 760 || g.call(n(".waterfall"),
             function(t) {
                 var e = t.querySelectorAll(".waterfall-item"),
                 i = [0, 0];
@@ -159,7 +165,7 @@
             t.parentNode.parentNode.classList.toggle("expand")
         },
         page: function() {
-            var t = a(".fade, .fade-scale"),
+            var t = n(".fade, .fade-scale"),
             e = !1;
             return {
                 loaded: function() {
@@ -186,14 +192,14 @@
                 this.margin = 40,
                 this.title = this.$img.title || this.$img.alt || "",
                 this.isZoom = !1;
-                var n, a, o, l, c;
+                var a, n, o, c, l;
                 this.calcRect = function() {
-                    l = s.clientWidth,
-                    c = s.clientHeight;
-                    var t = c - 2 * this.margin,
-                    e = n,
-                    i = a,
-                    r = (this.margin, e > l ? l / e: 1),
+                    c = s.clientWidth,
+                    l = s.clientHeight;
+                    var t = l - 2 * this.margin,
+                    e = a,
+                    i = n,
+                    r = (this.margin, e > c ? c / e: 1),
                     d = i > t ? t / i: 1,
                     h = Math.min(r, d);
                     return e *= h,
@@ -201,8 +207,8 @@
                     {
                         w: e,
                         h: i,
-                        t: (c - i) / 2 - o.top,
-                        l: (l - e) / 2 - o.left + this.$img.offsetLeft
+                        t: (l - i) / 2 - o.top,
+                        l: (c - e) / 2 - o.left + this.$img.offsetLeft
                     }
                 },
                 this.setImgRect = function(t) {
@@ -227,8 +233,8 @@
                 };
                 var r = this;
                 this.zoomIn = function() {
-                    n = this.$img.naturalWidth || this.$img.width,
-                    a = this.$img.naturalHeight || this.$img.height,
+                    a = this.$img.naturalWidth || this.$img.width,
+                    n = this.$img.naturalHeight || this.$img.height,
                     o = this.$img.getBoundingClientRect(),
                     i.style.height = o.height + "px",
                     i.classList.add("ready"),
@@ -269,7 +275,7 @@
                     r.isZoom && r.zoomOut()
                 })
             }
-            g.call(a(".img-lightbox"),
+            g.call(n(".img-lightbox"),
             function(t) {
                 new i(t)
             })
@@ -298,7 +304,7 @@
         x.page.loaded()
     });
     var E = !1;
-    n('a[href^="mailto"]').addEventListener(L,
+    a('a[href^="mailto"]').addEventListener(L,
     function() {
         E = !0
     }),
@@ -315,7 +321,7 @@
         x.toggleMenu(),
         x.waterfall()
     }),
-    l.addEventListener(L,
+    c.addEventListener(L,
     function() {
         v(x.goTop.bind(x, 0))
     },
@@ -328,7 +334,7 @@
     !1),
     f.addEventListener(L,
     function() {
-        c.classList.add("hide")
+        l.classList.add("hide")
     },
     !1),
     d.addEventListener(L,
@@ -351,10 +357,10 @@
     !1),
     t.BLOG.SHARE && x.share(),
     t.BLOG.REWARD && x.reward(),
-    x.noop = y,
+    x.noop = w,
     x.even = L,
-    x.$ = n,
-    x.$$ = a,
+    x.$ = a,
+    x.$$ = n,
     Object.keys(x).reduce(function(t, e) {
         return t[e] = x[e],
         t
